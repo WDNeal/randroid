@@ -1,0 +1,63 @@
+//seconds.cpp
+//Waylon Neal
+//9.30.15
+/*Prompt for number of seconds
+Input number of seconds
+If seconds >= 86400 display days, hours, minutes, and seconds
+If seconds >= 3600 display hours, minutes, and seconds
+If seconds >= 60 display minutes, and seconds
+Else display the seconds*/
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+const int secondsinday = 86400, secondsinhour = 3600, secondsinmin = 60;
+
+int main()
+{
+	int secondsinput, seconds, days, hours, minutes, remsecs;
+	cout << "How many seconds? ";
+	cin >> secondsinput;
+	if (secondsinput >= secondsinday){
+		days = secondsinput / secondsinday;
+		remsecs = secondsinput % secondsinday;
+		hours = remsecs / secondsinhour;
+		remsecs = remsecs % secondsinhour;
+		minutes = remsecs / secondsinmin;
+		seconds = remsecs % secondsinmin;
+		cout << "There are " << days << " days, " << hours << " hours, " << minutes << " minutes, and " << seconds << " seconds in " << secondsinput << " seconds.\n";
+	}
+	else if (secondsinput >= secondsinhour) {
+		hours = secondsinput / secondsinhour;
+		remsecs = secondsinput % secondsinhour;
+		minutes = remsecs / secondsinmin;
+		seconds = remsecs % secondsinmin;
+		cout << "There are " << hours << " hours, " << minutes << " minutes, and " << seconds << " seconds in " << secondsinput << " seconds.\n";
+	}
+	else if (secondsinput >= secondsinmin){
+		minutes = secondsinput / secondsinmin;
+		seconds = secondsinput % secondsinmin;
+		cout << "There are " << minutes << " minutes, and " << seconds << " seconds in " << secondsinput << " seconds.\n";
+	}
+	else
+		cout << secondsinput << " seconds is less than a minute.\n";
+
+	return 0;
+}
+
+/*How many seconds? 273484
+There are 3 days, 3 hours, 58 minutes, and 4 seconds in 273484 seconds.
+Press any key to continue . . .
+
+How many seconds? 54234
+There are 15 hours, 3 minutes, and 54 seconds in 54234 seconds.
+Press any key to continue . . .
+
+How many seconds? 2430
+There are 40 minutes, and 30 seconds in 2430 seconds.
+Press any key to continue . . .
+
+How many seconds? 45
+45 seconds is less than a minute.
+Press any key to continue . . .*/
